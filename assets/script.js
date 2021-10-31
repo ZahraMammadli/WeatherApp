@@ -136,3 +136,43 @@ var getFiveDayForecast = (event) => {
 };
 
 //  save the city to localStorage
+var saveCity = (newCity) => {
+  let cityExists = false;
+  for (let i = 0; i < localStorage.length; i++) {
+    if (localStorage["cities" + i] === newCity) {
+      cityExists = true;
+      break;
+    }
+  }
+  if (cityExists === false) {
+    localStorage.setItem("cities" + localStorage.length, newCity);
+  }
+};
+var renderCities = () => {
+  $("#city-results").empty();
+  if (localStorage.length === 0) {
+    if (lastCity) {
+      $("#search-city").attr("value", lastCity);
+    } else {
+      $("#search-city").attr("value", "Austin");
+    }
+  } else {
+    let lastCityKey = "cities" + (localStorage.length - 1);
+    lastCity = localStorage.getItem(lastCityKey);
+    $("#search-city").attr("value", lastCity);
+    for (let i = 0; i < localStorage.length; i++) {
+      let city = localStorage.getItem("cities" + i);
+      let cityEl;
+      if (currentCity === "") {
+        currentCity = lastCity;
+      }
+      if (city === currentCity) {
+        cityEl = `<button type="button" class="list-group-item list-group-item-action active">${city}</button></li>`;
+      } else {
+        cityEl = `<button type="button" class="list-group-item list-group-item-action">${city}</button></li>`;
+      }
+      $("#city-results").prepend(cityEl);
+    }
+  }
+};
+
