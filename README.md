@@ -13,7 +13,7 @@ Please input the city name and press on search button.Once done you will be disp
 
 You can find screenshot of the page in the assets folder, follow link below:
 
-![ScreenCapture of the webpage](assets/weatherAPP.png)
+![ScreenCapture of the webpage](assets/weatherApp.png)
 
 PageLink
 GitLink: https://zahramammadli.github.io/WeatherApp/
